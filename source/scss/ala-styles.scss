@@ -1,0 +1,815 @@
+// 2024 ALA styles
+
+// Roboto font
+@import url(https://fonts.googleapis.com/css?family=Lato%3A700%7CRoboto%3A300%2C400%2C400i%2C500%2C700%2C900&ver=5.2.1);
+
+
+@import "../vendor/bootstrap-3.4.1/assets/stylesheets/bootstrap";
+
+
+
+// ALA colour palette
+$flamingo: #f26649;
+$rust: #c44d34;
+$grey: #637073;
+$concrete: #f2f2f2;
+$silver: #9d9d9d;
+$charcoal: #212121;
+$honey: #ffc557;
+$pale-moss: #b7cd96;
+$seafoam: #68dad5;
+$ocean: #003a70;
+$lavender: #a191b2;
+$plum: #691c32;
+$marigold: #eb9d07;
+$lagoon: #076164;
+$peacock: #1b5d81;
+$eggplant: #5b397d;
+$sand: #ffedcf;
+$forest: #38613d;
+$glacial: #c3edef;
+$pinot: #921d11;
+$lightgrey: #d9d9d9;
+$grey: #637073;
+
+$primary:       $rust;
+$secondary:     $silver;
+$success:       $pale-moss;
+$info:          $seafoam;
+$warning:       $honey;
+$danger:        $flamingo;
+$light:         $concrete;
+$dark:          $charcoal;
+
+$font-family-sans-serif: Roboto, sans-serif;
+
+$body-color: $charcoal;
+$body-color-dark: $concrete;
+
+$link-color: $ocean;
+$link-color-dark: $glacial;
+
+// Bootstrap 3 breakpoints
+$screen-sm-min: 576px;
+$screen-md-min: 992px;
+$screen-lg-min: 1170px;
+
+// outline buttons with different text colour
+.btn-outline-primary  {
+    --bs-btn-color: $charcoal;
+}
+
+// slightly wider left/right gutters
+.row > * {
+    --bs-gutter-x: 1.75rem;
+}
+
+.ala-header-wrapper {
+    padding-top: 0.75rem;
+}
+
+.ala-header {
+    // margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+@media (min-width: $screen-md-min) {
+    .ala-header-wrapper {
+        padding-top: 1.75rem;
+    }
+    .ala-header {
+        // margin-top: 1.75rem;
+        margin-bottom: 0;
+    }
+}
+
+.ala-acknowledgement-header-background {
+    background-color: #d9d9d9;
+}
+
+.ala-acknowledgement-header {
+    --bs-alert-color: $charcoal;
+    --bs-alert-bg: transparent;
+    --bs-alert-border-color: transparent;
+    --bs-alert-link-color: $charcoal;
+    margin-bottom: 0;
+}
+
+.ala-header-logo {
+    justify-content: flex-start;
+
+    img {
+        width: 186px;
+        height: 27px;
+        content:url(../img/ALA_Logo_light_186.png);
+    }
+}
+
+.ala-header-toggles {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;  
+}
+
+.ala-header-nav-toggle {
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: black;
+    }
+}
+
+.ala-header-dark-toggle {
+
+    margin-right: 1.25rem;
+
+    svg {
+        width: 1rem;
+        height: 1rem;
+        color: black;
+    }
+
+    .active svg {
+        color: white;
+    }
+}
+
+.ala-header-tools {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+
+    .ala-header-contact, .ala-header-search {
+        margin-top: 0.45rem;
+    }
+
+    .ala-header-dark-toggle .dropdown-toggle::after {
+        vertical-align: 0.1em;
+    }
+
+    .ala-header-sign-up.signedOut, .ala-header-sign-in.signedOut, .ala-header-my-profile.signedIn, .ala-header-sign-out.signedIn {
+        display: block;
+    }
+    .ala-header-sign-up.signedIn, .ala-header-sign-in.signedIn, .ala-header-my-profile.signedOut, .ala-header-sign-out.signedOut {
+        display: none;
+    }
+
+    .ala-header-auth-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        div {
+            margin-left: 0.4rem;
+        }
+    }
+
+    .ala-header-contact {
+        --bs-link-color-rgb: $charcoal;
+
+        a {
+            text-decoration: none;
+        }
+        
+    }
+    svg {
+        width: 1rem;
+        height: 1rem;
+        color: black;
+    }
+
+    .active svg {
+        color: white;
+    }
+}
+
+.ala-header-wrapper {
+    border-bottom: 1px solid $lightgrey;
+}
+
+// @include color-mode(dark) {
+[data-bs-theme=dark] {
+    .btn-outline-primary  {
+        --bs-btn-color: $concrete;
+    }
+    .ala-header-wrapper {
+        border-bottom: 1px solid $grey;
+    }
+    .ala-acknowledgement-header-background {
+        background-color: $charcoal;
+    }
+    .ala-acknowledgement-header {
+        --bs-alert-color: white;
+        --bs-alert-link-color: white;
+    }
+    .ala-header-wrapper {
+        background-color: black;
+    }
+    .ala-header-tools, .ala-header-nav-toggle {
+        svg, use {
+            color: white;
+        }
+    }
+    .ala-header-dark-toggle {
+        svg, use {
+            color: white;
+        }
+    }
+    .ala-header-tools {
+        .ala-header-contact {
+            --bs-link-color-rgb: white;
+        }
+    }
+    .ala-header-logo img {
+        content:url(../img/ALA_Logo_dark_186.png);
+    }
+}
+
+@media (min-width: $screen-md-min) {
+
+    .ala-header-top-expanded {
+        padding-top: 0;
+    }
+    .ala-header-logo {
+        width: 48%;
+         img {
+            width: 325px;
+            height: 47px;
+            content:url(../img/ALA_Logo_light_325.png);
+        }
+    }
+    .ala-header .ala-header-tools {
+        display: flex;
+        width: 26rem;
+        justify-content: flex-end;
+        padding-top: 0;
+        padding-left: 0;
+
+        >div {
+            margin-left: 2rem;
+        }
+        >div:first-child {
+            margin-left: 0;
+        }
+    }
+    .ala-header-toggles {
+        padding-right: 0;
+    }
+    .ala-header-dark-toggle {
+        padding-top: 0.3rem;
+    }
+    [data-bs-theme=dark] {
+        .ala-header-logo img {
+            content:url(../img/ALA_Logo_dark_325.png);
+        }
+    }
+
+}
+
+@media (min-width: $screen-lg-min) {
+    .ala-header-logo {
+        width: 55%;
+    }
+}
+
+
+.ala-header-nav {
+    margin-top: 0.5rem;
+
+    > ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    
+        > li {
+            display: block;
+            margin-right: 0;
+            padding-top: 0.8rem;
+            border-top: 1px solid $gray-300;
+            --bs-link-color-rgb: $charcoal;
+
+            a {
+                text-decoration: none;
+            }
+
+            button {
+                border: none;
+                display: inline-block;
+                background-color: transparent;
+                padding-bottom: 0.8rem;
+                border-bottom: none;
+
+                span {
+                    display: inline-block;
+                    width: 1rem;
+                    height: 1rem;
+                    margin-left: 0.2rem;
+                    /* Bootstrap Icons SVG: chevron-down */
+                    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708'/></svg>");
+                    background-repeat: no-repeat;
+                    background-size: 1rem 1rem;
+                    background-position: 0 0.2rem;
+                    background-color: transparent;
+                }
+
+                &:focus {
+                    //
+                }
+
+            }
+
+            .ala-header-nav-secondary-panel {
+                // position: absolute;
+                // left: 0;
+                // width: 100%;
+                border-top: 1px solid $gray-300;
+
+                display: none;
+                // background: linear-gradient(180deg, $white 0%, $white 66%, $concrete 100%), var(--bs-body-bg);
+                // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+
+                // hiding by default
+                // visibility: hidden;
+                // opacity: 0.3;
+                // transform: rotateX(-90deg);
+                // transform-origin: top center;
+                //transition: 280ms all 120ms ease-out;
+
+                .container {
+                    // margin-top: 2.2rem;
+                    // margin-bottom: 2.2rem;
+
+                    .ala-header-secondary-panel-meta {
+                        // visibility: hidden;
+                        // border-right: 1px solid $gray-300;
+                        // padding-right: 3rem;
+                        // h4 {
+                        //     font-size: 1.8rem;
+                        //     margin-bottom: 1.1rem;
+                        // }
+
+                    }
+
+                    .ala-header-secondary-panel-list {
+                        padding-left: 0;
+                        padding-right: 0;
+
+                        .ala-header-nav-secondary-list {
+                            list-style: none;
+                            padding-left: 1rem;
+                            // padding-left: 3rem;
+    
+                            li {
+                                margin-top: -1px; // avoid doubling border-top
+                                padding-top: 0.9rem;
+                                padding-bottom: 0.9rem;
+                                border-top: 1px solid $gray-300;
+    
+                                .ala-header-nav-tertiary-list {
+                                    margin-top: 1rem;
+                                    margin-bottom: -1rem;
+                                    list-style: none;
+                                    padding-left: 1rem;
+                                    // border-top: 1px solid $gray-300;
+                                }
+                                a:hover, a:focus {
+                                    text-decoration: underline;
+                                }
+                                a::after {
+                                    display: inline-block;
+                                    content: "";
+                                    vertical-align: -.125em;
+                                    height: 1rem;
+                                    width: 2rem;
+                                    /* Bootstrap Icons SVG: arrow-right */
+                                    background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23999' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8' clip-rule='evenodd'/></svg>");
+                                    background-repeat: no-repeat;
+                                    background-size: 1rem 1rem;
+                                    background-position: 0.5rem 0;
+                                }
+                            }
+                        }
+
+                        &:first-child {
+                            .ala-header-nav-secondary-list {
+                                li:first-child {
+                                    border-top: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                button {
+                    // border-bottom: 4px solid $rust;
+                }
+            }
+
+            button[aria-expanded="true"]{
+                color: $primary;
+
+                span {
+                    /* Bootstrap Icons SVG: chevron-up */
+                    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23c44d34' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z'/></svg>");
+                }
+
+                +.ala-header-nav-secondary-panel {
+                    // opacity: 1;
+                    // transform: rotateX(0);
+                    // visibility: visible;
+                    display: block;
+                    // background: linear-gradient(180deg, $white 0%, $white 66%, $concrete 100%), var(--bs-body-bg);
+                    // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+                }
+            }
+
+        }
+    }
+}
+
+[data-bs-theme=dark] {
+
+    .ala-header-nav >ul >li {
+
+        --bs-link-color-rgb: white;
+
+        button span {
+            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ffffff' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708'/></svg>");
+        }
+        button[aria-expanded="true"]{
+            color: $flamingo;
+
+            span {
+                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23f26649' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z'/></svg>");
+            }
+        }
+    }
+}
+
+@media (min-width: $screen-md-min) {
+    .ala-header .ala-header-nav {
+        display: block;
+        margin-top: 2.2rem;
+        > ul {
+            > li {
+                display: inline-block;
+                margin-right: 2rem;
+                border-top: none;
+                padding-top: none;
+
+                &:hover {
+                    button {
+                        border-bottom: 4px solid $rust;
+                    }
+                }
+
+                &[data-expanded="true"]{
+                    button {
+                        border-bottom: 4px solid $rust;
+                    }
+                }
+
+                button {
+                    border-bottom: 4px solid transparent;
+
+                    &:focus {
+                        border-bottom: 4px solid $rust;
+                    }
+
+                    &[aria-expanded="true"]{
+                        color: var(--bs-link-color-rgb);
+        
+                        +.ala-header-nav-secondary-panel {
+                            opacity: 1;
+                            transform: rotateX(0);
+                            visibility: visible;
+                            // background: linear-gradient(180deg, $white 0%, $white 66%, $concrete 100%), var(--bs-body-bg);
+                            background: var(--bs-body-bg);
+                            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+                        }
+                    }
+
+                }
+
+                .ala-header-nav-secondary-panel {
+                    position: absolute;
+                    left: 0;
+                    width: 100%;
+                    visibility: hidden;
+                    opacity: 0.3;
+                    transform: rotateX(-90deg);
+                    transform-origin: top center;
+
+                    .container {
+                        margin-top: 2.2rem;
+                        margin-bottom: 2.2rem;
+    
+                        .ala-header-secondary-panel-meta {
+                            // display: block;
+                            // visibility: visible;
+                            border-right: 1px solid $gray-300;
+                            padding-right: 3rem;
+                            h4 {
+                                font-size: 1.8rem;
+                                margin-bottom: 1.1rem;
+                            }
+                        }
+
+                        .ala-header-secondary-panel-list {
+                            padding-left: calc(var(--bs-gutter-x)* 0.5);
+                            padding-right: calc(var(--bs-gutter-x)* 0.5);
+
+                            .ala-header-nav-secondary-list {
+                                padding-left: 3rem;
+    
+                                li {
+                                    margin-bottom: 1rem;
+                                    padding-top: 0;
+                                    padding-bottom: 0;
+                                    border-top: none;
+    
+                                    .ala-header-nav-tertiary-list {
+                                        border-top: none;
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    [data-bs-theme=dark] {
+        .ala-header-nav >ul >li button[aria-expanded="true"] {
+            color: var(--bs-link-color-rgb);
+        }
+    }
+}
+
+#breadcrumb {
+    padding: 0.5rem 0;
+    background-color: $concrete;
+
+    .breadcrumb-list {
+        margin-bottom: 0;
+        padding-left: 0;
+
+        li {
+            display: inline-block;
+        }
+    
+        li + li::before {
+            display: inline-block;
+            content: "";
+            vertical-align: -.125em;
+            height: 1rem;
+            width: 2rem;
+            /* Bootstrap Icons SVG: chevron-right */
+            background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23999' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708' clip-rule='evenodd'/></svg>");
+            background-repeat: no-repeat;
+            background-size: 1rem 1rem;
+            background-position: 0.5rem 0;
+        }
+    }
+}
+
+.ala-page {
+    margin-top: 1rem;
+}
+
+
+.footer-top {
+    padding: 30px 0;
+    border-top: 1px solid $lightgrey;
+
+    .ala-footer-ala-logo {
+        // width: 325px;
+        // height: 47px;
+        // background-size: auto;
+        margin-bottom: 1.4rem;
+
+        img {
+            width: 186px;
+            height: 27px;
+            content:url(../img/ALA_Logo_light_186.png);
+        }
+    }
+
+    .ala-footer-partner-text {
+        font-size: 0.9rem;
+        width: 95%;
+    }
+
+    .ala-footer-partner-logos {
+        list-style: none;
+        margin-bottom: 2rem;
+
+        .ala-footer-ncris-logo {
+            margin-right: 1.9rem;
+
+            img {
+                width: 65px;
+                content:url(../img/NCRIS-PROVIDER.png);
+            }
+        }
+        
+        .ala-footer-csiro-logo {
+            margin-right: 0.7rem;
+
+            img {
+                width: 47px;
+            }
+        }
+
+        .ala-footer-gbif-logo {
+            img {
+                width: 102px;
+                content:url(../img/gbif-dot-org-green-logo.svg);
+            }
+        }
+    }
+
+    .ala-footer-news-help {
+        font-weight: bold;
+        list-style: none;
+        padding-left: 0;
+
+        li {
+            margin-bottom: 0.9rem;
+        }
+    }
+
+    .ala-footer-socials {
+        list-style: none;
+        margin-bottom: 2rem;
+
+        li {
+            width: 2rem;
+            display: inline-block;
+            margin-right: 1.2rem;
+
+
+            button {
+                --bs-btn-padding-x: 0;
+                --bs-btn-padding-y: 0;
+                --bs-btn-border-radius: 0.2rem;
+                width: 1.3rem;
+                height: 1.3rem;
+                font-size: 0.5rem;
+
+                &.ala-footer-facebook {
+                    font-size: 0.9rem;
+                }
+                &.ala-footer-twitter svg {
+                    margin-left: -0.3rem;
+                }
+                &.ala-footer-linkedin svg {
+                    margin-left: -0.2rem;
+                    width: 1.4rem;
+                }
+                &.ala-footer-insta svg {
+                    margin-left: -0.2rem;
+                    width: 1.2rem;
+                }
+
+                svg {
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+
+        }
+    }
+
+    .ala-footer-copyright-etc {
+        list-style: none;
+        font-size: 0.9rem;
+        padding-top: 1.2rem;
+
+        li {
+            width: 7rem;
+            display: inline-block;
+        }
+    }
+
+    .ala-footer-contact {
+        
+        h4 {
+            font-size: $font-size-base;
+            margin-bottom: 1.1rem;
+        }
+        p {
+            width: 95%;
+        }
+    }
+}
+[data-bs-theme=dark] {
+    .footer-top {
+        border-top: 1px solid $grey;
+
+        .ala-footer-ala-logo {
+            img {
+                content:url(../img/ALA_Logo_dark_186.png);
+            }
+        }
+
+        .ala-footer-partner-logos {
+            .ala-footer-ncris-logo {
+                img {
+                    content:url(../img/NCRIS-PROVIDER-RGB-REV.png);
+                }
+            }
+            .ala-footer-gbif-logo {
+                img {
+                    content:url(../img/gbif-dot-org-green-logo-dark.svg);
+                }
+            }
+        }
+        .ala-footer-socials {
+            li {
+                button {
+
+                    --bs-btn-bg: white;
+                    --bs-btn-hover-bg: #eee;
+                    --bs-btn-active-bg: #ddd;
+
+                    svg {
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// acknowledgement block in footer
+.footer-bottom {
+    background-color: #550100;
+    background-image: url('../img/footer-acknowledgement-bg.svg');
+    background-size: cover;
+
+    .col {
+        padding-top: 1rem;
+        text-align: left;
+        color: white;
+        font-size: 125%;
+
+        a {
+            color: white;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            width: 95%;
+        }
+
+        .ala-footer-acknowledgement-learn {
+            font-size: 1rem;
+        }
+    }
+}
+@media (min-width: $screen-md-min) {
+    .footer-top {
+        padding: 58px 0;
+
+        .ala-footer-ala-logo {
+            img {
+                width: 325px;
+                height: 47px;
+                content:url(../img/ALA_Logo_light_325.png);
+            }
+        }
+
+        .ala-footer-partner-text {
+            width: 335px;
+        }
+
+        .ala-footer-partner-logos, .ala-footer-socials {
+            margin-bottom: 0;
+        }
+    }
+    .footer-bottom {
+
+        .col {
+            padding: 4rem 11rem 2.6rem;
+            text-align: center;
+            p {
+                margin-bottom: 2rem;
+            }    
+        }
+    }
+
+    [data-bs-theme=dark] {
+        .footer-top {
+            .ala-footer-ala-logo {
+                img {
+                    content:url(../img/ALA_Logo_dark_325.png);
+                }
+            }
+        }
+    }
+}
+
