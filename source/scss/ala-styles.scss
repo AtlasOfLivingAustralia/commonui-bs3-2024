@@ -188,7 +188,7 @@ $screen-lg-min: 1170px;
 }
 
 // @include color-mode(dark) {
-[data-bs-theme=dark] {
+[data-theme=dark] {
     .btn-outline-primary  {
         --bs-btn-color: $concrete;
     }
@@ -258,7 +258,7 @@ $screen-lg-min: 1170px;
     .ala-header-dark-toggle {
         padding-top: 0.3rem;
     }
-    [data-bs-theme=dark] {
+    [data-theme=dark] {
         .ala-header-logo img {
             content:url(../img/ALA_Logo_dark_325.png);
         }
@@ -429,7 +429,7 @@ $screen-lg-min: 1170px;
     }
 }
 
-[data-bs-theme=dark] {
+[data-theme=dark] {
 
     .ala-header-nav >ul >li {
 
@@ -542,7 +542,7 @@ $screen-lg-min: 1170px;
             }
         }
     }
-    [data-bs-theme=dark] {
+    [data-theme=dark] {
         .ala-header-nav >ul >li button[aria-expanded="true"] {
             color: var(--bs-link-color-rgb);
         }
@@ -706,7 +706,7 @@ $screen-lg-min: 1170px;
         }
     }
 }
-[data-bs-theme=dark] {
+[data-theme=dark] {
     .footer-top {
         border-top: 1px solid $grey;
 
@@ -802,7 +802,7 @@ $screen-lg-min: 1170px;
         }
     }
 
-    [data-bs-theme=dark] {
+    [data-theme=dark] {
         .footer-top {
             .ala-footer-ala-logo {
                 img {
