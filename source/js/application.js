@@ -2,19 +2,21 @@
 ALA 2024 header nav
 */
 jQuery( document ).ready(function() {
-    const menuItems = document.querySelectorAll(".ala-header-nav-primary-item");
 
-    let expandedItem = null;
+
+    const alaHeaderMenuItems = document.querySelectorAll(".ala-header-nav-primary-item");
+
+    let alaHeaderExpandedItem = null;
 
     const expandSubMenu = (item) => {
         // close all currently-open submenus
-        menuItems.forEach((allitem) => {
+        alaHeaderMenuItems.forEach((allitem) => {
             collapseSubMenu(allitem);
         });
 
         const subMenu = item.querySelector("div");
         const button = item.querySelector("button");
-        expandedItem = item;
+        alaHeaderExpandedItem = item;
 
         subMenu.setAttribute("aria-hidden","false");
         button.setAttribute("aria-expanded","true");
@@ -26,7 +28,7 @@ jQuery( document ).ready(function() {
     const collapseSubMenu = (item) => {
         const subMenu = item.querySelector("div");
         const button = item.querySelector("button");
-        expandedItem = null;
+        alaHeaderExpandedItem = null;
 
         subMenu.setAttribute("aria-hidden","true");
         button.setAttribute("aria-expanded","false");
@@ -34,7 +36,7 @@ jQuery( document ).ready(function() {
         button.focus(); // Focus back on the button
     };
 
-    menuItems.forEach((item) => {
+    alaHeaderMenuItems.forEach((item) => {
         const button = item.querySelector("button");
 
         button.addEventListener("click", (event) => {
@@ -77,6 +79,26 @@ jQuery( document ).ready(function() {
             });
         }
     });
+
+    // dismissible acknowledgement banner
+    if (storageAvailable("localStorage")) {
+        var alaAckBannerDismissed = localStorage.getItem('ala-ack-banner-dismissed') || '';
+        var alaAckYearAhead = new Date().setFullYear(new Date().getFullYear() + 1);
+    
+        if (alaAckBannerDismissed < new Date()) {
+            // banner has never been dismissed, or was dismissed over a year ago
+            $('.ala-acknowledgement-header-background').css("display", "block");
+            localStorage.removeItem('ala-ack-banner-dismissed');
+        }
+    
+        $('.ala-acknowledgement-header').on('closed.bs.alert', function () {
+            localStorage.setItem('ala-ack-banner-dismissed',alaAckYearAhead);
+        })
+    } else {
+        // local storage not available, fall back to non-persistent dismissible banner
+        $('.ala-acknowledgement-header-background').css("display", "block");
+    }
+
 });
 
 /*!
@@ -199,75 +221,6 @@ jQuery( document ).ready(function() {
     };
 })();
 
-/* @preserve
- * Copyright (C) 2019 Atlas of Living Australia
- * All Rights Reserved.
- *
- * The contents of this file are subject to the Mozilla Public
- * License Version 1.1 (the "License"); you may not use this file
- * except in compliance with the License. You may obtain a copy of
- * the License at http://www.mozilla.org/MPL/
- *
- * Software distributed under the License is distributed on an "AS
- * IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
- * implied. See the License for the specific language governing
- * rights and limitations under the License.
- *
- * Created by Temi on 2019-05-07.
- */
-window.BC_CONF = window.BC_CONF || {};
-jQuery(function () {
-    var autoCompleteSelector = BC_CONF.autoCompleteSelector || "#autocompleteHeader",
-        appendToSelector = BC_CONF.appendToSelector || "#autocompleteSearchALA",
-        bieURL = BC_CONF.autocompleteURL || "https://bie-ws.ala.org.au/ws/search/auto.json",
-        templateId =  BC_CONF.templateId || "autoCompleteTemplate",
-        autocomplete = $.ui && $.ui.autocomplete;
-
-    if( typeof autocomplete === "function") {
-        var instance = autocomplete({
-            appendTo: appendToSelector,
-            minLength: 0,
-            source: function (request, response) {
-                $.ajax( {
-                    url: bieURL,
-                    dataType: "json",
-                    data: {
-                        q: request.term
-                    },
-                    success: function( data ) {
-                        response( data.autoCompleteList );
-                    }
-                } );
-            },
-            focus: function( event, ui ) {
-                var getName = $(this).data('ui-autocomplete').options.getMatchingName;
-                $( autoCompleteSelector ).val( getName(ui.item) );
-                return false;
-            },
-            select: function( event, ui ) {
-                var getName = $(this).data('ui-autocomplete').options.getMatchingName;
-                $( autoCompleteSelector ).val( getName(ui.item) );
-                return false;
-            },
-            getMatchingName: function (item) {
-                if (item.commonNameMatches && item.commonNameMatches.length) {
-                    return item.commonName;
-                } else {
-                    return item.name;
-                }
-            }
-        }, $( autoCompleteSelector ));
-        instance._renderItem = function( ul, item ) {
-            return $( tmpl(templateId)(item) )
-                .appendTo( ul );
-        };
-        instance._resizeMenu = function () {
-            var ul = this.menu.element;
-            ul.outerWidth(this.element.outerWidth());
-        };
-    }
-});
-
 function focusOnClickSearchButton () {
     // setTimeout to overturn focus on trigger button called by BS collapse plugin
     setTimeout(function () {
@@ -313,3 +266,23 @@ jQuery( document ).ready(function() {
         }
     })
 });
+
+// check that storage is available, e.g. storageAvailable("localStorage")
+function storageAvailable(type) {
+    let storage;
+    try {
+      storage = window[type];
+      const x = "__storage_test__";
+      storage.setItem(x, x);
+      storage.removeItem(x);
+      return true;
+    } catch (e) {
+      return (
+        e instanceof DOMException &&
+        e.name === "QuotaExceededError" &&
+        // acknowledge QuotaExceededError only if there's something already stored
+        storage &&
+        storage.length !== 0
+      );
+    }
+  }

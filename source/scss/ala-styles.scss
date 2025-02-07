@@ -55,9 +55,29 @@ $screen-sm-min: 576px;
 $screen-md-min: 992px;
 $screen-lg-min: 1170px;
 
+body {
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    color: $body-color;
+}
+a {
+    color: $link-color;
+    text-decoration: underline;
+}
+.btn {
+    font-size: 16px;
+}
+
 // outline buttons with different text colour
 .btn-outline-primary  {
-    --bs-btn-color: $charcoal;
+    color: $charcoal;
+    border-color: $rust;
+    text-decoration: none;
+
+    &:hover {
+        color: white;
+        background-color: $rust;
+    }
 }
 
 // slightly wider left/right gutters
@@ -174,8 +194,8 @@ $screen-lg-min: 1170px;
         
     }
     svg {
-        width: 1rem;
-        height: 1rem;
+        width: 1.6rem;
+        height: 1.6rem;
         color: black;
     }
 
@@ -241,7 +261,7 @@ $screen-lg-min: 1170px;
     }
     .ala-header .ala-header-tools {
         display: flex;
-        width: 26rem;
+        max-width: 50rem;
         justify-content: flex-end;
         padding-top: 0;
         padding-left: 0;
