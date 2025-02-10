@@ -507,7 +507,8 @@ a {
                             transform: rotateX(0);
                             visibility: visible;
                             // background: linear-gradient(180deg, $white 0%, $white 66%, $concrete 100%), var(--bs-body-bg);
-                            background: var(--bs-body-bg);
+                            // background: var(--bs-body-bg);
+                            background-color: white;
                             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
                         }
                     }
@@ -528,8 +529,8 @@ a {
                         margin-bottom: 2.2rem;
     
                         .ala-header-secondary-panel-meta {
-                            // display: block;
-                            // visibility: visible;
+                            display: block !important;
+                            visibility: visible;
                             border-right: 1px solid $gray-300;
                             padding-right: 3rem;
                             h4 {
